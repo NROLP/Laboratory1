@@ -8,6 +8,7 @@ class ProductController extends BaseController
 {
 
     private $gear3, $gear5;
+    
     public function __construct()
     {
         $this -> gear3 = new \App\Models\StudentModel();
