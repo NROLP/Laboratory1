@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=h1, initial-scale=1.0">
@@ -7,7 +8,7 @@
 </head>
 
 <body>
-        <form action="/save" method="post">
+    <form action="/save" method="post">
 
         <input type="hidden" name="id" value="<?= isset($gear4['id']) ? $gear4['id'] : '' ?>">
 
@@ -21,39 +22,44 @@
         <input type="text" name="Course" placeholder="Course" value="<?= isset($gear4['StudCourse']) ? $gear4['StudCourse'] : '' ?>">
 
         <label>Section</label>
+        
         <select id="StudSection" name="Section">
             <option value="" disabled selected>Select Section</option>
-        <?php foreach ($gear5 as $nika): ?>
-            <option value="<?= $nika['Section'] ?>" <?= (isset($gear4['StudSection']) && $gear4['StudSection'] == $nika['Section']) ? 'selected' : '' ?>>
-                <?= $nika['Section'] ?>
-            </option>
-        <?php endforeach; ?>
+            <?php foreach ($gear5 as $nika) : ?>
+                <option value="<?= $nika['Section'] ?>" <?= (isset($gear4['StudSection']) && $gear4['StudSection'] == $nika['Section']) ? 'selected' : '' ?>>
+                    <?= $nika['Section'] ?>
+                </option>
+            <?php endforeach; ?>
 
-        <label>Year</label>
-        <input type="number" name="Year" placeholder="Year" value="<?= isset($gear4['StudYear']) ? $gear4['StudYear'] : '' ?>">
+            <label>Year</label>
+            <input type="number" name="Year" placeholder="Year" value="<?= isset($gear4['StudYear']) ? $gear4['StudYear'] : '' ?>">
 
-        <input type="submit" value="save">
-</form>
+            <input type="submit" value="save">
+    </form>
 
-        <ul>
-            <ul>Student Name</ul>
-            <ul>Gender</ul>
-            <ul>Course</ul>
-            <ul>Section</ul>
-            <ul>Year</ul>
-            <ul>Action</ul>
-        </ul>
+    <ul>
+        <ul>Student Name</ul>
+        <ul>Gender</ul>
+        <ul>Course</ul>
+        <ul>Section</ul>
+        <ul>Year</ul>
+        <ul>Action</ul>
+    </ul>
 
-        <?php foreach ($gear3 as $in): ?> <!-- Display DATA from database -->
+    <?php foreach ($gear3 as $in) : ?> <!-- Display DATA from database -->
         <ul>
             <ul><?= $in['StudName']    ?></ul>
             <ul><?= $in['StudGender']  ?></ul>
             <ul><?= $in['StudCourse']  ?></ul>
             <ul><?= $in['StudSection'] ?></ul>
             <ul><?= $in['StudYear']    ?></ul>
-            <ul><a href="/delete/<?= $in['id'] ?>">delete</a> <a href="/edit/<?= $in['id'] ?>">edit</a> </ul>
+            <ul>
+                <a href="/delete/<?= $in['id'] ?>"> delete </a>
+                <a href="/edit/<?= $in['id'] ?>"> edit </a>
+            </ul>
         </ul>
-        <?php endforeach; ?>
+    <?php endforeach; ?>
 
 </body>
+
 </html>
